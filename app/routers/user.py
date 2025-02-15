@@ -17,11 +17,8 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     # hash the password - user.password
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
-    print(f"[Logger] {user}")
     new_user = models.User(**user.model_dump())
-    print("[Logger] add db")
     db.add(new_user)
-    print("[Logger] commit")
     db.commit()
     db.refresh(new_user)
     return new_user
