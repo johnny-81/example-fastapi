@@ -4,6 +4,13 @@ on: [push, pull_request]
 
 jobs:
   job1:
+    env:
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: Testing@123
+      DATABASE_NAME: fastapi
+      DATABASE_USERNAME: postgres
+      SECRET_KEY: e0c39f01c8db6c829c4d886811ad4c394e207848036e3624b1370cf9f8877f50
     runs-on: ubuntu-latest
     steps:
       - name: puling git repo
