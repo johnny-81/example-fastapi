@@ -65,10 +65,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - name: Deploy to production
-        uses: JorgeLNJunior/render-deploy@v1.4.5
-        with:
-          service_id: ${{ secrets.RENDER_SERVICE_ID }}
-          api_key: ${{ secrets.RENDER_API_KEY }}
-          wait_deploy: true
+    - name: Deploying to Render
+      id: render_deploy
+      uses: MrAmericanMike/trigger-render-deploy@0.0.1
+      with:
+        render-service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        render-api-key: ${{ secrets.RENDER_API_KEY }}
+        wait-for-success: true
 
